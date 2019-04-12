@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
- /*echo "<pre>".print_r($jobs,true)."</pre>";*/ ?>
+ /*echo "<pre>".print_r($jobs,true)."</pre>";*/ 
+ $companies = $this->companies_model->get_company();?>
 <html>
 <head>
     <title>Jobs.CEZ.Local</title>  
@@ -41,12 +42,9 @@
           Selectati Compania
         </a>
    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">CEZ Vanzare</a>
-          <a class="dropdown-item" href="#">CEZ Romania</a>
-          <a class="dropdown-item" href="#">Distributie Oltenia</a>
-          <a class="dropdown-item" href="#">CEZ Trade</a>
-          <a class="dropdown-item" href="#">Tomis Team</a>
-          <a class="dropdown-item" href="#">TMK</a>
+      <?php foreach ($companies as $company){ ?>
+         <a class="dropdown-item" href="#" value = "<?=$company->companies_id?>"><?=$company->name ?></a>
+     <?php } ?>
         </div>
       </li>
     </ul>
@@ -66,3 +64,8 @@
         
     	</ul>
 </nav>
+
+<script>
+
+
+</script> 

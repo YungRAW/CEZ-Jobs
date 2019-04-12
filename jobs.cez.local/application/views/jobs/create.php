@@ -1,37 +1,37 @@
 <?php  defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+  
+
 <?php echo validation_errors(); ?>
 
 <?php echo form_open_multipart('livetable/create'); ?>
   <div class="form-group">
     <label for="companieForm">Companie</label>
-    <select class="form-control" id="companieForm" required>
-      <option value = "1">CEZ Vanzare</option>
-      <option value = "2">CEZ Romania</option>
-      <option value = "3">Distributie Oltenia</option>
-      <option value = "4">CEZ Trade</option>
-      <option value = "5">Tomis Team</option>
-      <option value = "6">TMK</option>
+    <select class="form-control" id="companieForm" name = "data[companies_id]"  >
+      <?php foreach ($companies as $company){ ?>
+         <option value = "<?=$company->companies_id ?>"> <?=$company->name ?></option>
+     <?php } ?>
+      
     </select>
   </div>
   <div class="form-group">
     <label>Directie</label>
-    <textarea id="editor1" class="form-control" name="directie" placeholder="Numele Directiei" required></textarea>
+    <textarea id="editor1" class="form-control" name="data[Directia]" placeholder="Numele Directiei"></textarea>
   </div>
   <div class="form-group">
     <label>Departamentul</label>
-    <textarea id="editor3" class="form-control" name="departament" placeholder ="Numele Departamentului" required></textarea>
+    <textarea id="editor3" class="form-control" name="data[departament]" placeholder ="Numele Departamentului"  ></textarea>
   </div>
   <div class="form-group">
     <label>Denumirea</label>
-    <textarea id="editor2" class="form-control" name="denumire" placeholder ="Denumirea Postului" required></textarea>
+    <textarea id="editor2" class="form-control" name="data[denumirepost]" placeholder ="Denumirea Postului"  ></textarea>
   </div>
   <div class="form-group">
     <label>Firma</label>
-    <textarea id="editor5" class="form-control" name="firma" placeholder ="Denumirea firmei" required></textarea>
+    <textarea id="editor5" class="form-control" name="data[firmapost]" placeholder ="Denumirea firmei"  ></textarea>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect2">Tipul Postului</label>
+    <label for="exampleFormControlSelect2" name="data[tippost]">Tipul Postului</label>
     <select class="form-control" id="tipPost">
       <option value="1">Pe perioada nedeterminata</option>
       <option value="2">Pe perioada determinata</option>
@@ -40,33 +40,33 @@
 
   <div class="form-group" id = "perioada" style="display:none;">
     <label>Perioada postului</label>
-    <textarea id="editor5" class="form-control" name="perioada" placeholder ="Perioada Postului" required></textarea>
+    <textarea id="editor5" class="form-control" name="data[perioadapost]" placeholder ="Perioada Postului"  ></textarea>
   </div>
 
 
   <div class="form-group">
     <label>Locatie</label>
-    <textarea id="editor8" class="form-control" name="locatie" placeholder ="Locatia Postului" required></textarea>
+    <textarea id="editor8" class="form-control" name="data[locatie]" placeholder ="Locatia Postului"  ></textarea>
   </div>
   <div class="form-group">
     <label>Informatii Post</label>
-    <textarea id="editor9" class="form-control" name="info" placeholder ="Informatii legate de post" required></textarea>
+    <textarea id="editor9" class="form-control" name="data[informatiipost]" placeholder ="Informatii legate de post"  ></textarea>
   </div>
   <div class="form-group">
     <label>Cerintele Postului</label>
-    <textarea id="editor10" class="form-control" name="cerinte" placeholder ="Cerintele Postului" required></textarea>
+    <textarea id="editor10" class="form-control" name="data[cerinte]" placeholder ="Cerintele Postului"  ></textarea>
   </div>
   <div class="form-group">
     <label>Responsabilitatiile Postului</label>
-    <textarea id="editor11" class="form-control" name="responsabilitati" placeholder ="Responsabilitatiile Postului" required></textarea>
+    <textarea id="editor11" class="form-control" name="data[responsabilitati]" placeholder ="Responsabilitatiile Postului"  ></textarea>
   </div>
   <div class = "form-group">
     <label> Valabilitate Start</label>
-    <textarea id = "editor12" class = "form-control" name = "valabilitateStart" placeholder = "Valabilitate Start" required> </textarea>
+    <textarea id = "editor12" class = "form-control" name = "data[valabilitateStart]" placeholder = "Valabilitate Start"  > </textarea>
   </div>
   <div class = "form-group">
     <label> Valabilitate End</label>
-    <textarea id = "editor13" class = "form-control" name = "valabilitateEnd" placeholder = "Valabilitate Sfarsit" required> </textarea>
+    <textarea id = "editor13" class = "form-control" name = "data[valabilitateEnd]" placeholder = "Valabilitate Sfarsit"  > </textarea>
   </div>
   <button type="submit" class="btn btn-success" href = # >Adaugati Jobul</button>
 
@@ -83,8 +83,10 @@ if ($(this).val()== 1)
 
 </script>
 
-<script>
+<!--<script>
   $("#companieForm").click(function(){
+
+    if($(this).val() == 
 
     
 
@@ -102,4 +104,4 @@ data: {data: valoare}
 });
 
 </script>
-
+-->

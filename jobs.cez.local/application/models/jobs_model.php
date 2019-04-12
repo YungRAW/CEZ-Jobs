@@ -22,8 +22,10 @@ class Jobs_model extends CI_Model{
 	public function create_job(){
 		
 
-		$data = array(
-			'Companie' => $this->input->post('companie'),
+		$data = $this->security->xss_clean($this->input->post('data'));
+
+		/*$data = array(
+			'companies_id' => $this->input->post('companie'),
 			'Directia' => $this->input->post('directie'),
 			'Departament' => $this->input->post('departament'),
 			'DenumirePost' => $this->input->post('denumirePost'),
@@ -36,7 +38,7 @@ class Jobs_model extends CI_Model{
 			'Responsabilitati' => $this->input->post('responsabilitati'),
 			'ValabilitateStart' => $this->input->post('valabilitateStart'),
 			'ValabilitateEnd' => $this->input->post('valabilitateEnd')
-		);
+		);*/
 		
 		return $this->db->insert('jobs', $data);
 	}
@@ -54,22 +56,7 @@ class Jobs_model extends CI_Model{
 	
 	public function edit_job($id){
 		
-		$data = array(
-			'Companie' => $this->input->post('companie'),
-			'Directie' => $this->input->post('directie'),
-			'Departament' => $this->input->post('departament'),
-			'DenumirePost' => $this->input->post('denumirePost'),
-			'FirmaPost' => $this->input->post('firmaPost'),
-			'TipPost' => $this->input->post('tipPost'),
-			'PerioadaPost'  => $this->input->post('perioadaPost'),
-			'Locatia' => $this->input->post('locatia'),
-			'InformatiiPost' => $this->input->post('informatiiPost'),
-			'Cerinte' => $this->input->post('cerintePost'),
-			'Responsabilitati' => $this->input->post('responsabilitati'),
-			'ValabilitateStart' => $this->input->post('valabilitateStart'),
-			'ValabilitateEnd' => $this->input->post('valabilitateEnd')
-		);
-		
+		$data = $this->security->xss_clean($this->input->post('data'));
 		$this->db->where('id', $this->input->post('id'));
 		return $this->db->update('jobs', $data);
 		

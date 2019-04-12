@@ -8,8 +8,7 @@
             <th>Denumire Post</th>
             <th>Departament</th>
             <th>Locatie</th>
-            <th>Valabilitate</th>
-             
+            <th>Valabilitate</th>    
             <th>Operatii</th>
           </tr>
          </thead>
@@ -17,7 +16,17 @@
           <?php 
          foreach ($jobs as $row) { ?>
             <tr>
-              <td><?=$row["Companie"]?></td>
+
+              <td>
+                <?=($row["companies_id"]==1) ? "CEZ Vânzare" : ""?>
+                <?=($row["companies_id"]==2) ? "CEZ România" : ""?>
+                <?=($row["companies_id"]==3) ? "Distributie Oltenia" : ""?>
+                <?=($row["companies_id"]==4) ? "CEZ Trade" : ""?>
+                <?=($row["companies_id"]==5) ? "Tomis Team" : ""?>
+                <?=($row["companies_id"]==6) ? "TMK" : ""?>
+
+              </td>
+
               <td><?=$row["Directia"]?></td>
               <td><?=$row["DenumirePost"]?></td>
               <td><?=$row["Departament"]?></td>
@@ -44,3 +53,4 @@
 <?php if($this->session->flashdata('login_failed')): ?>
       <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
       <?php endif; ?>
+<?= $this->session->flashdata("job_created"); ?>

@@ -10,6 +10,7 @@ class LiveTable extends CI_Controller {
   $this->load->model('livetable_model');
   $this->load->model('jobs_model');
   $this->load->model('user_model');
+  $this->load->model('companies_model');
  }
 
 
@@ -32,11 +33,15 @@ class LiveTable extends CI_Controller {
 
   $data = [];
   $data['title'] = " Adaugati un job";
-  $data['jobs'] = $this->jobs_model->get_jobs();
+  //$data['jobs'] = $this->jobs_model->get_jobs();
+  $data["companies"] = $this->companies_model->get_company();
 
 
 
-  $this->form_validation->set_rules('companie','Companie','required');
+
+  
+   /*$this->form_validation->set_rules('companie','Companie','required');
+
   $this->form_validation->set_rules('directie', 'Directie' , 'required' );
   $this->form_validation->set_rules('departament','Departament','required');
   $this->form_validation->set_rules('denumire','DenumirePost','required');
@@ -48,22 +53,27 @@ class LiveTable extends CI_Controller {
   $this->form_validation->set_rules('cerinte','Cerinte','required');
   $this->form_validation->set_rules('responsabilitati','Responsabilitati','required');
   $this->form_validation->set_rules('valabilitateStart','ValabilitateStart','required');
-  $this->form_validation->set_rules('valabilitateEnd','ValabilitateEnd','required');
+  $this->form_validation->set_rules('valabilitateEnd','ValabilitateEnd','required'); */
 
-  if($this->form_validation->run() === FALSE ) { 
+  //if($this->form_validation->run() === FALSE ) { 
+
+  if (!$this->input->post('data')){ 
 
     $this->load->view('header');
     $this->load->view('jobs/create', $data);
     $this->load->view('footer');
     
   }
-  
+  else{
+
+
+
   $this->jobs_model->create_job();
+    //exit("iesire");
 
   $this->session->set_flashdata('job_created', 'Jobul a fost adaugat!');
-  
   redirect('livetable');
-  
+  }
  }
 
  public function edit()
@@ -117,6 +127,16 @@ class LiveTable extends CI_Controller {
       $this->load->view('footer');
       
   }
+
+
+  public function test()
+  {
+
+    $data = $this->companies_model->get_company();
+    print_r($data);
+
+  }
+
 
  }
  
