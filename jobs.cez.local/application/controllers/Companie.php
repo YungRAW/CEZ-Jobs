@@ -20,8 +20,7 @@ class Companie extends CI_Controller {
         $this->load->view('jobs/index', $data);
         $this->load->view('templates/footer');
     
-    }
-    
+    }   
 }
 
 >

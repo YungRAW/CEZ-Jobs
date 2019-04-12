@@ -2,34 +2,30 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 	class Users extends CI_Controller{
 
-		// Log in user
 		public function login(){
-			
-		    $this->load->helper('form');
 			$data['title'] = 'Sign In';
 
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 
 			if($this->form_validation->run() === FALSE){
-			    
+				$this->load->view('header');
 				$this->load->view('users/login', $data);
-
+				$this->load->view('footer');
 			} else {
-				
 				
 				// Get username
 				$username = $this->input->post('username');
 				// Get and encrypt the password
 				$password = $this->input->post('password');
- 
+
 				// Login user
 				$user_id = $this->user_model->login($username, $password);
-
 
 				if($user_id){
 					// Create session
 					$user_data = array(
+						'user_id' => $user_id,
 						'username' => $username,
 						'logged_in' => true
 					);
@@ -42,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					redirect('livetable');
 				} else {
 					// Set message
-					$this->session->set_flashdata('login_failed', '<div class="alert alert-danger">Login is invalid!</div>');
+					$this->session->set_flashdata('login_failed', 'Login is invalid!');
 
 					redirect('users/login');
 				}		
@@ -53,15 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function logout(){
 			// Unset user data
 			$this->session->unset_userdata('logged_in');
+			$this->session->unset_userdata('user_id');
 			$this->session->unset_userdata('username');
+
 			// Set message
 			$this->session->set_flashdata('user_loggedout', 'You are now logged out.');
 
 			redirect('users/login');
 		}
-
-
-
-		
-
 	}

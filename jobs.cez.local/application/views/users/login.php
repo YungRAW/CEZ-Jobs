@@ -44,8 +44,9 @@
 }
     .btn
     {
-    font-weight: 700;
+    font-weight: 500;
     height: 36px;
+    background-color : rgb(125, 125 ,125);
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
@@ -59,6 +60,32 @@
     background-color: rgb(255,127,80);
 }
 
+.btn.btn-home { 
+background-color:rgb(125,125,125);
+padding:0px;
+font-weight: 700;
+font-size: 14px;
+height: 36px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+border: none;
+-o-transition: all 0.218s;
+-moz-transition: all 0.218s;
+-webkit-transition: all 0.218s;
+transition: all 0.218s;
+ }
+
+.btn.btn-home:hover,
+.btn.btn-home:active,
+.btn.btn-home:focus
+{
+  background-color: rgb(255,127,80);
+}
+ 
+
+
+
   </style>
     <html>
     <head>
@@ -69,7 +96,6 @@
 <?php echo form_open('users/login');?>
 	<div class="row justify-content-center">
 		<div class="col-md-4 col-md-offset-4 box">
-			<h1 class="text-center"><?php echo $title;?></h1>
 			<div class="form-group">
 				<input type="text" name="username" class="form-control" placeholder="Enter Username" required autofocus"/>
 			</div>

@@ -34,7 +34,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Joburi curente<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?=base_url('livetable/index')?>">Joburi curente<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,14 +50,19 @@
         </div>
       </li>
     </ul>
-  </div>     
+  </div>    
         <ul class="nav navbar-nav navbar-right">
-        <li><a  class="nav-link" href="<?=base_url('livetable/add/')?>">Adaugare Job</a></li>
         <?php if($this->session->userdata('logged_in')) : ?>
-      	<li><a  class="nav-link" href="<?=base_url('users/logout')?>">Logout</a></li>
+        <li><a  class="nav-link" href="<?=base_url('livetable/create')?>">Adaugare Job</a></li>
         <?php endif;?>
+
         <?php if(!$this->session->userdata('logged_in')) : ?>
         <li><a  class="nav-link" href="<?=base_url('users/login')?>">Login</a></li>
         <?php endif;?>
+
+        <?php if($this->session->userdata('logged_in')) : ?>
+      	<li><a  class="nav-link" href="<?=base_url('users/logout')?>">Logout</a></li>
+        <?php endif;?>
+        
     	</ul>
 </nav>

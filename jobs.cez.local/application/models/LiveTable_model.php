@@ -2,8 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LiveTable_model extends CI_Model {
-    
+ 
+  function __construct(){
+        
+      $this->load->database();
+      $this->load->model('livetable_model');
+  		$this->load->model('jobs_model');
+        
+  }
+
+
+
  function load_data() {
+  
   $this->db->order_by('id', 'DESC');
   $query = $this->db->get('sample_data');
   return $query->result_array();
